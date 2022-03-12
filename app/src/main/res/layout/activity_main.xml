@@ -275,8 +275,8 @@
 
     <TextView
             android:id="@+id/textView"
-            android:layout_width="362dp"
-            android:layout_height="202dp"
+            android:layout_width="344dp"
+            android:layout_height="182dp"
             android:autoSizeTextType="none"
             android:gravity="bottom|right"
             android:clickable="false"
