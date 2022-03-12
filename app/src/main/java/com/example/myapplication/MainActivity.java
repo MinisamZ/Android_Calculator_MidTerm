@@ -55,12 +55,12 @@ public class MainActivity extends AppCompatActivity {
         onClickButton(button7, "7");
         onClickButton(button8, "8");
         onClickButton(button9, "9");
+        onClickButton(buttonDot, ".");
         onClickOperationButton(buttonPlus, "+");
         onClickOperationButton(buttonMinus, "-");
         onClickOperationButton(buttonDivision, "/");
         onClickOperationButton(buttonMultiplication, "*");
         onClickOperationButton(buttonPercent, "%");
-        onClickOperationButton(buttonDot, ".");
         // дописать смену символов на buttonChange
         // дописать вывод решения на buttonEquals
         button0.setOnClickListener(new View.OnClickListener() {
@@ -107,6 +107,7 @@ public class MainActivity extends AppCompatActivity {
                             result = numberOne / numberTwo;
                             firstNumber = String.valueOf(numberOne);
                             break;
+
                     }
                     textView.setText(Double.toString(result));
 //                    textView.setText(firstNumber);
@@ -114,6 +115,54 @@ public class MainActivity extends AppCompatActivity {
                     textView.setText("err");
                 }
 
+            }
+        });
+        buttonPercent.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onClick(View view) {
+                try {
+                    double numberOne = Double.parseDouble(firstNumber);
+                    double numberTwo = Double.parseDouble((String) textView.getText());
+                    double result = 0;
+                    switch (mainSymbol) {
+                        case "+":
+                            result = numberOne + (numberOne * numberTwo / 100);
+                            firstNumber = String.valueOf(numberOne);
+                            break;
+                        case "-":
+                            result = numberOne - (numberOne * numberTwo / 100);
+                            firstNumber = String.valueOf(numberOne);
+                            break;
+                        case "*":
+                            result = numberOne * (numberOne * numberTwo / 100);
+                            firstNumber = String.valueOf(numberOne);
+                            break;
+                        case "/":
+                            result = numberOne / (numberOne * numberTwo / 100);
+                            firstNumber = String.valueOf(numberOne);
+                            break;
+
+                    }
+                    textView.setText(Double.toString(result));
+                } catch (Exception e) {
+                    textView.setText("err");
+                }
+            }
+        });
+        buttonChange.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onClick(View view) {
+                String s = (String) textView.getText();
+                if (s.isEmpty() || s.equals("0"))
+                    return;
+                if (s.charAt(0) != '-')
+                    textView.setText("-" + s);
+                else if (s.charAt(0) != '+')
+                    textView.setText(removeFirstChar(s));
+//                else if (s.charAt(0) == '+')
+//                    textView.setText(removeFirstChar(s));
             }
         });
         buttonC.setOnClickListener(new View.OnClickListener() {
@@ -177,4 +226,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    public static String removeFirstChar(String s) {
+        return (s == null || s.length() == 0) ? "" : (s.substring(1));
+    }
+
 }
