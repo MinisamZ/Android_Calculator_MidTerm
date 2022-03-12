@@ -12,7 +12,8 @@ public class MainActivity extends AppCompatActivity {
     private Button buttonPlus, buttonMinus, buttonC, buttonChange, buttonDivision, buttonMultiplication, buttonEquals;
     private Button buttonDot, buttonPercent;
     private TextView textView;
-
+    private String mainSymbol;
+    private String firstNumber;
 
 
     @Override
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         addListenerOnButton();
     }
+
     public void addListenerOnButton() {
         button0 = (Button) findViewById(R.id.buttonZero);
         button1 = (Button) findViewById(R.id.button1);
@@ -53,6 +55,14 @@ public class MainActivity extends AppCompatActivity {
         onClickButton(button7, "7");
         onClickButton(button8, "8");
         onClickButton(button9, "9");
+        onClickOperationButton(buttonPlus, "+");
+        onClickOperationButton(buttonMinus, "-");
+        onClickOperationButton(buttonDivision, "/");
+        onClickOperationButton(buttonMultiplication, "*");
+        onClickOperationButton(buttonPercent, "%");
+        onClickOperationButton(buttonDot, ".");
+        // дописать смену символов на buttonChange
+        // дописать вывод решения на buttonEquals
         button0.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("SetTextI18n")
             @Override
@@ -63,12 +73,34 @@ public class MainActivity extends AppCompatActivity {
                 } catch (Exception e) {
                     result = "0";
                 }
-                if (result.charAt(0) =='0'){
+                if (result.charAt(0) == '0') {
                     textView.setText(result);
-                }
-                else {
+                } else {
                     result += 0;
                     textView.setText(result);
+                }
+
+            }
+        });
+        buttonEquals.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onClick(View view) {
+                try {
+                    double numberOne = Double.parseDouble(firstNumber);
+                    double numberTwo = Double.parseDouble((String) textView.getText());
+                    double result = 0;
+                    switch (mainSymbol) {
+                        case "+":
+                            result = numberOne + numberTwo;
+                            firstNumber = String.valueOf(numberOne);
+                            System.out.println(firstNumber);
+                            break;
+                    }
+                    textView.setText(Double.toString(result));
+//                    textView.setText(firstNumber);
+                } catch (Exception e) {
+                    textView.setText("err");
                 }
 
             }
@@ -81,6 +113,33 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    //operation button
+    public void onClickOperationButton(Button buttonLocal, String symbol) {
+        buttonLocal.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onClick(View view) {
+                String result;
+                try {
+                    result = (String) textView.getText();
+                    try {
+                        char s = result.charAt(result.length() - 1);
+                        if (s == '+' || s == '-' || s == '/' || s == '*' || s == '%')
+                            return;
+                        firstNumber = result;
+                        mainSymbol = symbol;
+                        result = symbol;
+                    } catch (Exception e) {
+                        result = "";
+                    }
+                } catch (Exception e) {
+                    result = "";
+                }
+                textView.setText(result);
+            }
+        });
+    }
+
     public void onClickButton(Button buttonLocal, String symbol) {
         buttonLocal.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("SetTextI18n")
@@ -89,13 +148,19 @@ public class MainActivity extends AppCompatActivity {
                 String result;
                 try {
                     result = (String) textView.getText();
-                    if (result.charAt(0) =='0'){
-                        textView.setText("");
+                    if (result.charAt(0) == '0') {
+                        result = "";
+                        textView.setText("1");
+                    }
+                    try {
+                        char s = result.charAt(result.length() - 1);
+                        if (s == '+' || s == '-' || s == '/' || s == '*' || s == '%')
+                            result = "";
+                    } catch (Exception e) {
                     }
                 } catch (Exception e) {
-                    result = "0";
+                    result = "";
                 }
-
                 result += symbol;
                 textView.setText(result);
             }
