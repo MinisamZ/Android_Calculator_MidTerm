@@ -94,7 +94,18 @@ public class MainActivity extends AppCompatActivity {
                         case "+":
                             result = numberOne + numberTwo;
                             firstNumber = String.valueOf(numberOne);
-                            System.out.println(firstNumber);
+                            break;
+                        case "-":
+                            result = numberOne - numberTwo;
+                            firstNumber = String.valueOf(numberOne);
+                            break;
+                        case "*":
+                            result = numberOne * numberTwo;
+                            firstNumber = String.valueOf(numberOne);
+                            break;
+                        case "/":
+                            result = numberOne / numberTwo;
+                            firstNumber = String.valueOf(numberOne);
                             break;
                     }
                     textView.setText(Double.toString(result));
