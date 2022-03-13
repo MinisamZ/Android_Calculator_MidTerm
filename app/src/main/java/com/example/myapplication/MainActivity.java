@@ -11,7 +11,7 @@ public class MainActivity extends AppCompatActivity {
     private Button button1, button2, button3, button4, button5, button6, button7, button8, button9, button0;
     private Button buttonPlus, buttonMinus, buttonC, buttonChange, buttonDivision, buttonMultiplication, buttonEquals;
     private Button buttonDot, buttonPercent;
-    private TextView textView;
+    private TextView textView, textView2, textView3, textView4, textView5;
     private String mainSymbol;
     private String firstNumber;
 
@@ -45,6 +45,10 @@ public class MainActivity extends AppCompatActivity {
         buttonMultiplication = (Button) findViewById(R.id.button_multiplication);
 
         textView = (TextView) findViewById(R.id.textView);
+        textView2 = (TextView) findViewById(R.id.textView2);
+        textView3 = (TextView) findViewById(R.id.textView3);
+        textView4 = (TextView) findViewById(R.id.textView4);
+        textView5 = (TextView) findViewById(R.id.textView5);
 
         onClickButton(button1, "1");
         onClickButton(button2, "2");
@@ -90,6 +94,10 @@ public class MainActivity extends AppCompatActivity {
                     double numberOne = Double.parseDouble(firstNumber);
                     double numberTwo = Double.parseDouble((String) textView.getText());
                     double result = 0;
+                    textView2.setText(firstNumber);
+                    textView3.setText(mainSymbol);
+                    textView4.setText(Double.toString(numberTwo));
+                    textView5.setText("=");
                     switch (mainSymbol) {
                         case "+":
                             result = numberOne + numberTwo;
@@ -97,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
                             break;
                         case "-":
                             result = numberOne - numberTwo;
-                            firstNumber = String.valueOf(numberOne);
+                            firstNumber = String.valueOf(numberTwo);
                             break;
                         case "*":
                             result = numberOne * numberTwo;
@@ -144,6 +152,8 @@ public class MainActivity extends AppCompatActivity {
                             break;
 
                     }
+                    textView2.setText(numberTwo + "%");
+                    textView5.setText("=");
                     textView.setText(Double.toString(result));
                 } catch (Exception e) {
                     textView.setText("err");
@@ -169,6 +179,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 textView.setText("0");
+                textView2.setText("");
+                textView3.setText("");
+                textView4.setText("");
+                textView5.setText("");
             }
         });
     }
@@ -180,6 +194,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String result;
+                textView2.setText("");
                 try {
                     result = (String) textView.getText();
                     try {
@@ -187,7 +202,12 @@ public class MainActivity extends AppCompatActivity {
                         if (s == '+' || s == '-' || s == '/' || s == '*' || s == '%')
                             return;
                         firstNumber = result;
+                        if (result.isEmpty())
+                            textView4.setText(textView2.getText());
+                        else
+                            textView4.setText(result);
                         mainSymbol = symbol;
+                        textView3.setText(mainSymbol);
                         result = symbol;
                     } catch (Exception e) {
                         result = "";
@@ -230,5 +250,6 @@ public class MainActivity extends AppCompatActivity {
     public static String removeFirstChar(String s) {
         return (s == null || s.length() == 0) ? "" : (s.substring(1));
     }
+
 
 }

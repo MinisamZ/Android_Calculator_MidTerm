@@ -6,6 +6,54 @@
                                                    android:layout_height="match_parent"
                                                    tools:context=".MainActivity">
 
+    <TextView
+            android:layout_width="349dp"
+            android:layout_height="49dp"
+            android:id="@+id/textView4"
+            android:autoSizeTextType="none"
+            android:gravity="bottom|right"
+            android:clickable="false"
+            android:contextClickable="false"
+            android:cursorVisible="false"
+            android:textSize="34sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.001" tools:ignore="RtlHardcoded"
+    />
+    <TextView
+            android:layout_width="349dp"
+            android:layout_height="49dp"
+            android:id="@+id/textView5"
+            android:autoSizeTextType="none"
+            android:gravity="bottom|right"
+            android:clickable="false"
+            android:contextClickable="false"
+            android:cursorVisible="false"
+            android:textSize="34sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.188" tools:ignore="RtlHardcoded"
+    />
+    <TextView
+            android:layout_width="349dp"
+            android:layout_height="49dp"
+            android:id="@+id/textView3"
+            android:autoSizeTextType="none"
+            android:gravity="bottom|right"
+            android:clickable="false"
+            android:contextClickable="false"
+            android:cursorVisible="false"
+            android:textSize="34sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.064" tools:ignore="RtlHardcoded"
+    />
     <Button
             android:id="@+id/button_division"
             android:layout_width="85dp"
@@ -275,8 +323,8 @@
 
     <TextView
             android:id="@+id/textView"
-            android:layout_width="344dp"
-            android:layout_height="182dp"
+            android:layout_width="348dp"
+            android:layout_height="49dp"
             android:autoSizeTextType="none"
             android:gravity="bottom|right"
             android:clickable="false"
@@ -288,6 +336,23 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.054" tools:ignore="RtlHardcoded"/>
+            app:layout_constraintVertical_bias="0.251" tools:ignore="RtlHardcoded"
+            app:layout_constraintHorizontal_bias="0.511"/>
+    <TextView
+            android:layout_width="349dp"
+            android:layout_height="49dp"
+            android:id="@+id/textView2"
+            android:autoSizeTextType="none"
+            android:gravity="bottom|right"
+            android:clickable="false"
+            android:contextClickable="false"
+            android:cursorVisible="false"
+            android:textSize="34sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.126" tools:ignore="RtlHardcoded"
+            app:layout_constraintHorizontal_bias="0.477"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
